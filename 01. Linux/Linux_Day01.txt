@@ -1,0 +1,162 @@
+DevOps:
+==============
+Modules;
+1. Linux Fundamentals - 3 days
+2. DevOps Overview - 2 days
+3. DevOps on Cloud (AWS) - 2 days
+4. Git and GitHub - 5 days
+5. Maven - 1 day
+6. Jenkins - 5 days
+
+3 Projects
+
+Additional Tools:
+Artifact Repo Tool: Nexus
+Code Quality Analysis: SonarQube
+
+Minimum of 3 years experience
+
+Shell Scripting videos
+https://youtube.com/playlist?list=PLs-PsDpuAuTeT2iRQpNs0sl-sXFD10I1C&si=KPI40XmZlKEHOvqJ
+https://github.com/KastroVKiran/ShellScriptingforDevOpsEngineering.git
+===========================================================================================
+Module 1: Linux Fundamentals
+
+What is an OS?
+OS is a software which is used to communicate with the machines (Laptop/Desktop/Mobile/Physical Server/Virtual Machine)
+OS is going to acts an intermediate layer between user and the machine
+OS is mandatory to work with any machines
+It is going to provide an environment to work with the machines
+
+Types of OS;
+Windows
+MacOS
+Linux OS
+....
+
+As a software engineer, it is important to know about Linux OS
+
+Windows OS Vs Linux OS
+
+Based on the type of AMI, the default username will change;
+Amazon Linux 2023	- ec2-user
+Ubuntu				- ubuntu
+
+=======================
+Linux Commands_Part1
+=======================
+Based on the type of AMI, we have two default user types;
+1. ec2-user (Amazon Linux), ubuntu (Ubuntu)		- will have least privileges (Cannot install packages)
+2. root (Common for Amazon Linux & Ubuntu)	- will have complete permissions
+
+To clear the screen: clear or control + l
+
+$
+#
+
+    1  pwd
+    2  date
+    3  cal
+    4  cal 2026
+    5  cal 2100
+    6  cal -3
+    7  cal -4
+    8  cal -2
+    9  cal -9
+   10  cal -1
+   11  cal
+   12  cal march 2026
+   13  cal december 2026
+   14  whoami
+   15  clear
+   16  whoami
+   17  pwd
+   18  yum install maven -y
+   19  pwd
+   20  whoami
+   21  sudo su
+   22  whoami
+   23  pwd
+   24  clear
+   25  whoami
+   26  pwd
+   27  sudo su
+   28  whoami
+   29  pwd
+   30  sudo -i
+   31  whoami
+   32  pwd
+   33  sudo su -
+   34  whoami
+   35  pwd
+   36  clear
+   37  history
+
+sudo apt install bsdmainutils -y
+
+Linux Default Directory Structure;
+ history
+    2  whoami
+    3  yum install maven -y
+    4  sudo yum install maven -y
+    5  sudo yum install git -y
+    6  whoami
+    7  clear
+    8  history
+    9  history -d 2
+   10  history
+   11  whoami
+   12  sudo yum install git -y
+   13  whoami
+   14  sudo su
+   15  pwd
+   16  history
+   17  clear
+   18  pwd
+   19  whoami
+   20  cd /
+   21  pwd
+   22  ls
+   23  man pwd
+   24  man ls
+   25  ls --help
+   26  whoami --help
+   27  ls
+   28  which ls
+   29  which whoami
+   30  which pwd
+   31  git -v
+   32  mvn -v
+   33  which git
+   34  which mvn
+   35  which java
+   36  clear
+   37  bc
+   38  sudo yum install bc -y
+   39  bc
+   40  whoami
+   41  alias don="whoami"
+   42  whoami
+   43  don
+   44  alias cal="c"
+   45  cal
+   46  c
+   47  clear
+   48  pwd
+   49  cd /home/ec2-user/
+   50  pwd
+   51  history
+
+Directories Creation in Linux
+Directories means folders
+
+learn with kastro
+
+
+
+
+
+
+
+
+
