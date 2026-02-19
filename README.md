@@ -69,18 +69,6 @@ Expand your **DevOps knowledge** with these free resources! 🚀
 
 ---
 
-## 📊 **Repository Stats**  
-
-<div align="center">
-
-![GitHub forks](https://img.shields.io/github/forks/KastroVKiran/StarAgileBatch5?style=social)
-![GitHub stars](https://img.shields.io/github/stars/KastroVKiran/StarAgileBatch5?style=social)
-![GitHub watchers](https://img.shields.io/github/watchers/KastroVKiran/StarAgileBatch5?style=social)
-
-</div>
-
----
-
 ## 📝 **How to Use This Repository**
 
 1. **⭐ Star** this repository to bookmark it for easy access
@@ -115,7 +103,5 @@ By the end of this course, you will be able to:
 <div align="center">
 
 ## 🎉 **Happy Learning & Keep Automating!** 🚀  
-
-**"The only way to learn a new programming language is by writing programs in it." – Dennis Ritchie**
 
 </div>
