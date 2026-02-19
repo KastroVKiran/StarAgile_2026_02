@@ -5,7 +5,7 @@ This repository contains **lecture notes** discussed in our **live classes**. �
 
 ---
 
-[![GitHub Repo](https://img.shields.io/badge/Fork%20%26%20Star%20the%20Repo-Click%20Here-brightgreen?style=for-the-badge&logo=github)](https://github.com/KastroVKiran/StarAgileBatch5)
+[![GitHub Repo](https://img.shields.io/badge/Fork%20%26%20Star%20the%20Repo-Click%20Here-brightgreen?style=for-the-badge&logo=github)](https://github.com/KastroVKiran/StarAgileBatch5" target="_blank)
 
 ---
 
@@ -32,7 +32,7 @@ All class notes are organized by topic and date in this repository. Browse throu
 
 ### 📺 **More Comprehensive Courses**
 For more in-depth and updated courses, visit:  
-[![Website](https://img.shields.io/badge/www.learnwithkastro.com-%23007BFF?style=for-the-badge&logo=google-chrome&logoColor=white)](https://www.learnwithkastro.com)
+[![Website](https://img.shields.io/badge/www.learnwithkastro.com-%23007BFF?style=for-the-badge&logo=google-chrome&logoColor=white)](https://www.learnwithkastro.com" target="_blank)
 
 ---
 
@@ -41,16 +41,16 @@ For more in-depth and updated courses, visit:
 Expand your **DevOps knowledge** with these free resources! 🚀  
 
 ### 🖥 **Shell Scripting for DevOps Engineers**  
-[![Watch on YouTube](https://img.shields.io/badge/-Watch%20Now-red?style=for-the-badge&logo=youtube)](https://www.youtube.com/playlist?list=PLs-PsDpuAuTeT2iRQpNs0sl-sXFD10I1C)
+[![Watch on YouTube](https://img.shields.io/badge/-Watch%20Now-red?style=for-the-badge&logo=youtube)](https://www.youtube.com/playlist?list=PLs-PsDpuAuTeT2iRQpNs0sl-sXFD10I1C" target="_blank)
 
 ### 🐳 **Docker - Basics to Brilliance**  
-[![Watch on YouTube](https://img.shields.io/badge/-Watch%20Now-red?style=for-the-badge&logo=youtube)](https://www.youtube.com/playlist?list=PLs-PsDpuAuTeNx3OgGQ1QrpNBo-XE6VBh)
+[![Watch on YouTube](https://img.shields.io/badge/-Watch%20Now-red?style=for-the-badge&logo=youtube)](https://www.youtube.com/playlist?list=PLs-PsDpuAuTeNx3OgGQ1QrpNBo-XE6VBh" target="_blank)
 
 ### ☁️ **AWS Project**  
-[![Watch on YouTube](https://img.shields.io/badge/-Watch%20Now-red?style=for-the-badge&logo=youtube)](https://www.youtube.com/watch?v=Oj-Hr_aulKA&list=PLs-PsDpuAuTfG3gFR5DnVD58kT7JBO97x&index=3&t=3s&pp=gAQBiAQB)
+[![Watch on YouTube](https://img.shields.io/badge/-Watch%20Now-red?style=for-the-badge&logo=youtube)](https://www.youtube.com/watch?v=Oj-Hr_aulKA&list=PLs-PsDpuAuTfG3gFR5DnVD58kT7JBO97x&index=3&t=3s&pp=gAQBiAQB" target="_blank)
 
 ### 🔧 **DevOps Projects**  
-[![Watch on YouTube](https://img.shields.io/badge/-Watch%20Now-red?style=for-the-badge&logo=youtube)](https://www.youtube.com/playlist?list=PLs-PsDpuAuTfG3gFR5DnVD58kT7JBO97x)
+[![Watch on YouTube](https://img.shields.io/badge/-Watch%20Now-red?style=for-the-badge&logo=youtube)](https://www.youtube.com/playlist?list=PLs-PsDpuAuTfG3gFR5DnVD58kT7JBO97x" target="_blank)
 
 ---
 
@@ -58,10 +58,10 @@ Expand your **DevOps knowledge** with these free resources! 🚀
 
 <div align="center">
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/kastro-kiran/)
-[![WhatsApp](https://img.shields.io/badge/Join%20WhatsApp%20Group-%2325D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/EGw6ZlwUHZc82cA0vXFnwm)
-[![YouTube](https://img.shields.io/badge/YouTube-%23FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@KastroKiran)
-[![Website](https://img.shields.io/badge/Website-%23007BFF?style=for-the-badge&logo=google-chrome&logoColor=white)](https://www.learnwithkastro.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/kastro-kiran/" target="_blank)
+[![WhatsApp](https://img.shields.io/badge/Join%20WhatsApp%20Group-%2325D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/EGw6ZlwUHZc82cA0vXFnwm" target="_blank)
+[![YouTube](https://img.shields.io/badge/YouTube-%23FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@KastroKiran" target="_blank)
+[![Website](https://img.shields.io/badge/Website-%23007BFF?style=for-the-badge&logo=google-chrome&logoColor=white)](https://www.learnwithkastro.com" target="_blank)
 
 </div>
 
