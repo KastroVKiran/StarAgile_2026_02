@@ -1,0 +1,105 @@
+Module 1: Linux Fundamentals
+===================================
+=> To see the hidden files and directories
+ls -la
+Note: All the hidden files and directories starts with .
+
+=> Creation of Files in Linux
+touch - we can create empty files
+touch kastro.txt
+touch kiran.py kk.java kastro.net
+
+linux1.txt
+linux2.txt
+linux3.txt
+....
+linux10.txt
+
+cat - using cat we can write the data and we can also print the data inside a file
+cat > kastro.txt - it will help you to write the data in the file, but if there is any existing data, that data will be overwritten
+
+cat kastro.txt
+tac kastro.txt
+
+cat >> kastro.txt - it is used to append the data
+
+cat -n kastro.txt
+
+cat > kastro.py (cat can also create the file, if its not there)
+
+vi (or) vim (or) nano - file editors in Linux
+:wq
+:q!
+
+echo
+echo "This is file is created on behalf of kartik" >  kartik.txt
+
+wc kk.net
+wc -l kk.net
+wc -w kk.net
+wc -c kk.net
+wc -lw kk.net
+wc -lc kk.net
+wc -wc kk.net
+
+sort word.txt
+sort word.txt > sorted.txt
+sort -r word.txt
+sort word.txt | uniq
+
+cmp 01.yml 02.yml
+diff 01.yml 02.yml
+diff -u 01.yml 02.yml
+
+find -name damodar.py
+find -iname Damodar.py
+
+mv /home/ec2-user/kastro.py /home/ec2-user/damodar/
+
+cp /home/ec2-user/kk.net /home/ec2-user/damodar/
+
+cat *.txt
+
+more *.txt
+less *.txt		----> :n, :p, q
+
+cp 01.yml 01.yml_bkp
+
+head kastro.txt
+head -n 5 kastro.txt
+head -5 kastro.txt
+
+tail kastro.txt
+tail -n 5 kastro.txt
+tail -5 kastro.txt
+
+Print the data from line 5 to line 10 from top
+Print the data from line 5 to line 10 from bottom
+
+shift+a
+shift+i
+:6
+
+yy
+p
+dd
+r
+control+u
+
+GREP - Global Regular Expression Print
+To search for a word in a file
+
+grep -i 'apachE' error.log
+grep 'Apache' error.log
+grep -in "1024" error.log
+grep -ic "failed" error.log
+
+
+
+
+
+
+
+
+
+
