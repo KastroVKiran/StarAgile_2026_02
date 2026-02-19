@@ -1,7 +1,9 @@
-# 🚀 **Star Agile Batch 5**  
+# 🚀 Star Agile Batch 5  
 
-Hi, welcome! 👋 I'm **Kastro Kiran V.**, an **AWS & DevOps Corporate Trainer** and **Machine Learning Enthusiast**.  
-This repository contains **lecture notes** discussed in our **live classes**. 📚  
+Hi, welcome! 👋  
+I'm **Kastro Kiran V.**, an **AWS & DevOps Corporate Trainer** and **Machine Learning Enthusiast**.  
+
+This repository contains 📚 **lecture notes**, examples, and supporting materials discussed in our **live classes**.
 
 ---
 
@@ -9,49 +11,55 @@ This repository contains **lecture notes** discussed in our **live classes**. �
 
 ---
 
-## 🛠 **Tools Covered in This Course**  
+## 🛠 Tools Covered in This Course  
 
 | Tool | Description |
-|------|------------|
+|------|-------------|
 | ![Linux](https://img.shields.io/badge/Linux-%23FCC624?style=for-the-badge&logo=linux&logoColor=black) | Linux Fundamentals & Administration |
 | ![Shell Scripting](https://img.shields.io/badge/Shell%20Scripting-%23000000?style=for-the-badge&logo=gnu-bash&logoColor=white) | Writing & Automating Tasks with Shell Scripts |
-| ![DevOps](https://img.shields.io/badge/DevOps-%230081C6?style=for-the-badge&logo=dev.to&logoColor=white) | Introduction to DevOps Concepts |
-| ![AWS](https://img.shields.io/badge/AWS-%23FF9900?style=for-the-badge&logo=amazon-aws&logoColor=white) | DevOps on AWS |
 | ![Git](https://img.shields.io/badge/Git-%23F05032?style=for-the-badge&logo=git&logoColor=white) | Git & GitHub Version Control |
 | ![Maven](https://img.shields.io/badge/Maven-%2300404E?style=for-the-badge&logo=apache-maven&logoColor=white) | Build & Dependency Management |
 | ![Jenkins](https://img.shields.io/badge/Jenkins-%23D24939?style=for-the-badge&logo=jenkins&logoColor=white) | CI/CD Automation |
+| ![AWS](https://img.shields.io/badge/AWS-%23FF9900?style=for-the-badge&logo=amazon-aws&logoColor=white) | DevOps on AWS |
+| ![Nexus](https://img.shields.io/badge/Nexus-%23148F77?style=for-the-badge&logo=sonatype&logoColor=white) | Artifact Repository Management |
+| ![SonarQube](https://img.shields.io/badge/SonarQube-%234E9BCD?style=for-the-badge&logo=sonarqube&logoColor=white) | Code Quality & Static Analysis |
+| ![DevOps](https://img.shields.io/badge/DevOps-%230081C6?style=for-the-badge&logo=dev.to&logoColor=white) | DevOps Concepts & Practices |
 
 ---
 
-## 🌟 **Get the Latest Notes**  
+## 🎓 Additional FREE Learning Resources  
 
-To stay updated with the latest lecture notes, **click on the Fork icon** at the top of this repository! 🍴  
+Expand your **DevOps & Cloud knowledge** with these curated resources 🚀
 
-[![Fork the Repo](https://img.shields.io/badge/Fork%20this%20Repository-%230A66C2?style=for-the-badge&logo=git&logoColor=white)](https://github.com/KastroVKiran/StarAgileBatch5/fork)
-
----
-
-## 🎓 **Additional FREE Learning Resources**  
-
-Expand your **DevOps knowledge** with these free resources! 🚀  
-
-### 🖥 **Shell Scripting for DevOps Engineers**  
+### 🖥 Shell Scripting for DevOps Engineers  
 [![Watch on YouTube](https://img.shields.io/badge/-Watch%20Now-red?style=for-the-badge&logo=youtube)](https://www.youtube.com/playlist?list=PLs-PsDpuAuTeT2iRQpNs0sl-sXFD10I1C)
 
-Assignment Submission Form: https://docs.google.com/forms/d/e/1FAIpQLSdaejvcr69EgY6ua9UXSS_zJBmfUlqH44_YB_gcHxf6p7qxQQ/viewform?usp=sharing
+---
 
-### 🐳 **Docker - Basics to Brilliance**  
+### 🐳 Docker — Basics to Brilliance  
 [![Watch on YouTube](https://img.shields.io/badge/-Watch%20Now-red?style=for-the-badge&logo=youtube)](https://www.youtube.com/playlist?list=PLs-PsDpuAuTeNx3OgGQ1QrpNBo-XE6VBh)
 
-### ☁️ **AWS Project**  
-[![Watch on YouTube](https://img.shields.io/badge/-Watch%20Now-red?style=for-the-badge&logo=youtube)](https://www.youtube.com/watch?v=Oj-Hr_aulKA&list=PLs-PsDpuAuTfG3gFR5DnVD58kT7JBO97x&index=3&t=3s&pp=gAQBiAQB)
+---
 
-### 🔧 **DevOps Projects**  
+### ☁️ AWS Project  
+[![Watch on YouTube](https://img.shields.io/badge/-Watch%20Now-red?style=for-the-badge&logo=youtube)](https://www.youtube.com/watch?v=Oj-Hr_aulKA&list=PLs-PsDpuAuTfG3gFR5DnVD58kT7JBO97x&index=3)
+
+---
+
+### 🔧 DevOps Projects  
 [![Watch on YouTube](https://img.shields.io/badge/-Watch%20Now-red?style=for-the-badge&logo=youtube)](https://www.youtube.com/playlist?list=PLs-PsDpuAuTfG3gFR5DnVD58kT7JBO97x)
 
 ---
 
-## 🤝 **Connect with Me**  
+## 🌐 Want More Structured & Comprehensive Courses?
+
+For **updated, in-depth, and hands-on programs**, visit:
+
+👉 **https://www.learnwithkastro.com**
+
+---
+
+## 🤝 Connect with Me  
 
 🔗 **LinkedIn:** [Kastro Kiran](https://www.linkedin.com/in/kastro-kiran/)  
 
@@ -60,10 +68,4 @@ Assignment Submission Form: https://docs.google.com/forms/d/e/1FAIpQLSdaejvcr69E
 
 ---
 
-## 💬 **Feedback Matters!**  
-After going through the resources, **share your thoughts on LinkedIn** and **tag me** in your post.  
-I’d love to hear how this course helped you! 🚀  
-
----
-
-## 🎉 **Happy Learning & Keep Automating!** 🚀  
+## 🎉 Happy Learning & Keep Automating! 🚀
