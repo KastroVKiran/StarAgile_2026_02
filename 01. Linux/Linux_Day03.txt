@@ -1,0 +1,178 @@
+Module 1: Linux Fundamentals
+===================================
+du -sh *
+du -sh kastro
+du -sh kastro.txt
+
+find . -type f -mmin -5
+find . -type f -mtime -1
+
+find . -type f -mmin -5 -printf "%T+%p\n"
+
+fallocate -l 5M  file_5MB
+fallocate -l 10M file_10MB
+fallocate -l 15M file_15MB
+fallocate -l 25M file_25MB
+
+find . -type f -size +10M
+find . -type f -size +5M -mmin -60
+
+to know the ports which are opened and which are in use
+sudo ss -tulnp
+
+python3 -m http.server 8080
+
+uptime
+
+pts - pseudo terminal slave
+
+ss -tp | grep ssh
+
+last
+
+pkill -kill -t pts/1
+
+Working with different scenarios of grep
+grep "Linux" file1.txt
+grep -i "Linux" file1.txt
+grep -i "Linux" *
+
+grep -in "Linux" file1.txt
+
+grep "SSH" *
+grep "SSH" *.txt
+
+grep -v "Linux" file1.txt
+
+grep "^L" file1.txt
+
+grep "service$" file2.txt
+
+grep -E "ERROR|WARNING" app.log
+
+grep -A1 "ERROR" app.log
+
+grep -A1 "ERROR" app.log
+
+grep -l "ERROR" -r .
+
+grep -C1 "ERROR" app.log
+
+
+=> SED - Stream Editor
+It is used to replace the text without opening the file
+s - substitute
+d - delete
+p - print
+i - insert
+
+sed -n '3p' students.txt
+sed -n '2,4p' students.txt
+
+sed -i '1d' students.txt
+
+sed -i 's/Rahul/Sudev/' students.txt
+
+=> AWK
+it is a text processing language
+Aho Weinberger  Kernighan
+designed for working with columns and rows
+
+kastro 25 devops india
+
+$1 - kastro
+$2 - 25
+$3 - devops
+$4 - india
+$0 - whole line
+
+awk '{print $0}' server.log
+awk '{print $0}' server.log
+  122  awk '{print $1}' server.log
+  123  awk '{print $2}' server.log
+  124  awk '{print $3}' server.log
+  125  awk '{print $4}' server.log
+  126  awk '{print $1, $2}' server.log
+  127  awk '{print "ServerName:",$1, "CPU-Usage:",$2}' server.log
+  128  awk '$2 > 70 {print $1, $2}' server.log
+
+
+=> File Permissions in Linux
+File 			----> rw-r--r--
+Directory	----> rwxr-xr-x
+
+any file permissions in Linux is categorized into 3 groups;
+	user (u)
+	group (g)
+	others (o)
+
+For each category, we will have 3 permissions;
+	read (r)
+	write (w)
+	execute (x)
+
+root.txt
+rw-r--r--
+
+u ---> read, write
+g ---> read
+o ---> read
+
+to modify the file permissions, we have "chmod"
+chmod u+x kastro.txt
+chmod g+wx kastro.txt
+chmod o+wx kastro.txt
+
+chmod u-x kastro.txt
+chmod o-rwx kastro.txt
+
+File permissions using numbers;
+0 - no permissions
+1 - execute
+2 - write
+3 - 2+1 - write + execute
+4 - read
+5 - 4+1 - read +execute
+6 - 4+2 - read + write
+7 - 6+1 - read + write + execute 
+
+family ---- bhuvan, bro, sis
+kartik ----
+
+=> sudoers file & sshd_config file
+these two files are the Linux configuration files
+
+=> Package Managers
+package means a software
+
+Amazon Linux	---> yum (Advanced Package Tool)
+Ubuntu			---> apt (Advanced Package Tool)
+
+sudo hostnamectl set-hostname linux-server
+
+ping www.google.com
+ping 142.251.220.4
+
+wget - is used to download the files from browser
+
+curl - it is used to send the httpd request to the url
+
+ifconfig
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
