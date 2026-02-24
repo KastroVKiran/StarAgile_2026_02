@@ -1,0 +1,83 @@
+Module 1: Linux Fundamentals
+===================================
+useradd devuser ----> uid, gid, groups (1001)
+
+When we create an user, by default with the username, a group will also get created. In that group, the user will be the first member
+
+id devuser
+
+cat /etc/passwd
+cat /etc/shadow
+
+passwd devuser
+
+chown devuser:devuser test.txt
+
+groupadd devops
+cat /etc/group
+getent group
+
+usermod -aG devops devuser
+groups devuser
+
+groupmod -n platform devops
+
+sudo userdel devuser
+sudo groupdel devuser
+
+=> Web servers and App Servers
+nginx, apache/httpd...
+
+App Servers
+tomcat, jboss, nginx...
+
+=> Nginx Setup
+yum install nginx -y
+
+By default, nginx will run on port number 80
+apache/httpd ----> 80
+Tomcat: 8080
+
+/usr/share/nginx/html ----> index.html
+/var/www/html ---> index.html (apache/httpd)
+
+:%d ---> to delete everything in a file
+
+#!/bin/bash
+
+# Update packages
+dnf update -y
+
+# Install Apache (httpd) and NGINX
+dnf install -y httpd nginx
+
+# Enable services at boot
+systemctl enable httpd
+systemctl enable nginx
+
+# Start services
+systemctl start httpd
+systemctl start nginx
+
+# Optional: create test pages
+echo "<h1>Apache HTTPD Running</h1>" > /var/www/html/index.html
+echo "<h1>NGINX Running</h1>" > /usr/share/nginx/html/index.html
+
+===================================
+Module 2: DevOps Overview
+===================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
