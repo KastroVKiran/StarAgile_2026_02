@@ -8,6 +8,7 @@ This repository contains **lecture notes** discussed in our **live classes**. ðŸ
 [![GitHub Repo](https://img.shields.io/badge/Fork%20%26%20Star%20the%20Repo-Click%20Here-brightgreen?style=for-the-badge&logo=github)](https://github.com/KastroVKiran/StarAgileBatch5)
 
 ---
+WhatsApp Group Link: https://chat.whatsapp.com/LoSErA38enCGtnzEULuBK8?mode=gi_t
 
 ## ðŸ›  **Tools Covered in This Course**  
 
