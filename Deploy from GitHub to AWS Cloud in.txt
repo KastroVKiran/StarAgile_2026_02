@@ -1,0 +1,112 @@
+Deploy from GitHub to AWS Cloud in One Click
+========================================================================================================
+Secure Automated App Deployment to S3 using Code Pipeline from GitHub using CloudFront and WAF	
+
+Project Flow;
+
+Developer	----> GitHub 		---> AWS Code Build		--------> AWS Code Deploy	------------->	S3 Bucket	----> Static Website Hosting
+----> ACM	----> Cloud Front	---> WAF ----> AWS Code Pipeline
+
+Repo URL: https://github.com/KastroVKiran/ECR-ECS-Project.git
+
+While doing this project, replace the content in buildspec.yml file with the below content;
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "No installation needed for static HTML"
+
+  pre_build:
+    commands:
+      - echo "Preparing build..."
+
+  build:
+    commands:
+      - echo "Building static HTML site"
+      - mkdir -p output
+      # Copy all files to output directory
+      - cp -r * output/ || true
+      # Remove buildspec from artifacts
+      - rm -f output/buildspec.yml
+
+  post_build:
+    commands:
+      - echo "Build complete - $(ls -la output/)" 
+      
+artifacts:
+  files:
+    - '**/*'
+  base-directory: output
+  discard-paths: no
+
+1. Create a S3 bucket ----> Enable ACLs, because everyone should access the website ----> 'uncheck' Block all public access ----> Create bucket
+
+Open bucket ----> Properties ----> Enable static website hosting ----> Index document: index.html ----> Save changes
+As everyone has to access the app which we are going to deploy into S3 using static website hosting, we need to attach the bucket policy ----> Go to permissions  ----> Add below policy ----> 
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "<BucketARN>/*"
+    }
+  ]
+}
+
+Role Name: kastro-project-role
+arn:aws:iam::560185625463:role/service-role/kastro-project-role
+
+Role Name in Code Pipeline: AWSCodePipelineServiceRole-ap-south-1-kastro-project-pipeline
+
+Change the ARN in above Policy
+
+Note: We are not uploading code in S3 now, Code is in GitHub, using code pipeline we deploy code to S3 Bucket
+
+2. Creation of Code Build (though our app is not java or node based, we dont need to create this code build. Just for our idea we are doing it)
+Before creating code build, lets setup the connection with GitHub, because while creating code build, we have to establish that connection
+Code Build ----> Settings (left pane) ----> Connections ----> Create connection ----> Select provider: GitHub, Connection Name: kastro-project ----> Connect to github ----> Click on "install a new app" ----> It will redirect to GitHub account ----> Repo Access: 'Check' All repositories ----> Save (OR, you can select a specific repo as well) ----> It will take you to the connections page ----> And you will see a number under "App installations" ----> Click on "Connect" ----> You will see the success message
+
+Code Build ----> Create project ----> Name: myproject-kastro (workshop-project1) ----> Default project ----> Source provider: GitHub [You will see a green message as 'Your account is successfully connected by using an AWS Managed  GitHub app] ----> Repo: 'Check' Repo in my GitHub account, Select the repo where code is available ----> Primary source webhook events: 'Check' rebuild everytime a code change is pushed to this repo ----> Build type: Single build, Comment Approvals: ALL_PULL_REQUESTS, Approver Roles: GITHUB_WRITE, GITHUB_MAINTAIN, GITHUB_ADMIN ----> Environment: Ondemand, Managed Image, EC2, Container, Operating System: Amazon Linux, Service Role: New Service Role, Role Name: <Copy the role name and paste in safe location> ----> Buildspec: 'Çheck' use Buildspec file, Buildspec name: <Provide the name of buildspec file name> i.e buildspec.yml ----> Artifacts: No artifacts (as this project wont generate any artifacts), 'Check' cloud watch logs ----> Create build project
+
+Role Name: codebuild-myproject-kastro-service-role
+
+From the code build step we have copied the IAM Role, now lets give cloud front full access to this role
+IAM ----> Roles ----> Open the role which was created during Code Build step ----> Permissions ----> Add permissions: Attach Policies: Cloud Front Full Access ----> Add Permissions
+
+3. Creation of Code Pipeline
+Go to Code Pipeline → Create pipeline → 'Check' build custom pipeline → Next → Pipeline Name: kastro-pipeline → Execution mode: Queued → Service role: New service role → 'Çheck' allow AWS Code Pipeline to create a service role.... → Next → Source Provider: GitHub (via GitHub app) → Connection: Select the connection name created → Repo Name: Select the repo where code is there → Default branch: <Provide Branch Name of Code> → Output artifact format: Code Pipeline default, 'Check' enable automatic retry on stage failure → Webhook events: 'Check' Start your pipeline on push and pull request events → Next → Build: Other build providers, Select AWS CodeBuild from dropdown, Project Name: Select the project created in CodeBuild, Build type: Single build, Region: Mumbai → Next → Skip test stage → Deploy provider: Amazon S3 (because we are deploying our code to S3 service), Region: Mumbai, Bucket: Select the bucket which was created', 'Check' extract file before deploy → Next → Create pipeline
+
+Now the pipeline will go to GitHub and fetches the code and gives to code build, and code build use the buildspec.yml which is there in the repo and will build as per the instructions inside it and then creates a zip file and gives to code deploy and then code deploy extracts the files to S3 bucket
+
+[[[[[[[[[[[[[[[[ Now you can see the pipeline getting executed.
+It might fail in stage 1 itself. If it fails, follow as below → Click on the failed stage i.e source stage. You will see access denied. Copy the IAM Role name that you see in the error box → Goto IAM → Roles → Paste the role copied from the error message → Permissions → Attach permissions → Attach Policies → Give Administrator Access → Save ]]]]]]]]]]
+
+Goto Code Pipeline → 'Check' the pipeline created → Release change → Release → Now the pipeline will start getting executed
+Goto S3 and check for the bucket. You should see files inside the bucket
+Goto Code Pipeline, you will see pipeline got successful
+Open S3 Bucket → Properties → Scroll down to static website hosting → Copy the link and access the app in browser → You will see the app 
+
+Now lets work in little advanced way → If you observe the URL, it is showing 'not secure'.
+Also, to reduce the latency across the world, we will use CloudFront
+
+Before the above things, lets modify the code and see the live roll out → Goto Github → Goto index.html file → edit something in the file → Commit changes
+Goto CodePipeline and you can see automatically the pipeline has got triggered. This is called continuous deployment.
+Goto the browser and reload the page. You will see the updated application. This is called rollout.
+
+Lets reduce the latency using CloudFront → Goto CloudFront → Create distribution (to reduce the latency) → Distribution name: kastro-distribution, Distribution type: Single website or app → Custom domain: If you have the domain enter it which was purchased from Route 53 → Next → Origin type: Amazon S3 → S3 Origin → Browse S3 → Select the bucket where the code is there → Click on 'use this website endpoint' → Next → WAF: Do not Enable security protection (this is the best practice in real-time, but for now we are not going to select due to the bills) → Next → TLS Certificate: 'Check' create a wild card certificate  → Create certificate [wait for 2-3 minutes and dont click next, because it will take sometime to create the certificate] → Next → Create distribuition → Open the distribution created → click on 'Route domains to cloudfront' → setup routing automatically [This will automatically creates records in the route53.] → Goto distributions → You will see the 'last modified' status as 'Deploying'. Waitfor 2-3 minutes to complete the process → Once this is done → Goto browser → Enter the domain configured, you will see the app [https://<DomainName>]. Our connection is also secure.
+Note: if you dont see the app, Goto Distributions ----> You will see "Domain name (standard)", use the domain you will see there, to access the app in a secure way
+
+One last thing to work with CloudFront → Goto GitHub → Open the index.html and edit something → Commit changes → Goto Code Pipeline → You will see Pipeline got triggered automatically → Reload the page in browser, you will not see the changes → This is because, CloudFront generally caches your data across the world, so before the changes appear, it will take sometime. But the wait time is not suggested in realtime apps. So we need to tell the Code Pipeline to delete the caches and to use the updated code → For this we will edit buildspec.yml file in GitHub → Goto buildspec.yml file, add the below lines under the "Post build" command block as shown below
+post_build:
+  commands:
+    - echo "Build complete - $(ls -la output/)"
+    - echo "Invalidating Cloudfront cache..."
+    - aws cloudfront create-invalidation --distribution-id <DistributionIDfromCloudFront> --paths "/*"  
+
+→ Commit changes → Again the pipeline gets triggered. Once the pipeline is successful you will see the updated application now
+
+---------------------------------------------------------------------------------------COMPLETED---------------------------------------------------------------------------

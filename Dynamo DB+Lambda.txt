@@ -1,0 +1,33 @@
+------------------------------------------------------------
+Dynamo DB + AWS Lambda + API Gateway
+------------------------------------------------------------
+Dynamo DB - Acts as a database
+Lambda - Acts as a webserver
+API Gateway - Acts as a frontend
+
+Whenever a customer tries to access my app the request will come to API Gateway and then it will be forwarded to Lambda and then the information user going to enter in the App, it will be stored in Dynamo DB
+
+Demo
+We have to create an IAM role to publish Lambda function. Lambda function should be able to write the data to backend Database, so we will create the IAM Role and associate to Lambda function.
+IAM ---> Roles ---> Create role ---> 'Check' use case ---> User case: Lambda ---> Next ---> Permissions: AWSLambdaBasicExecutionRole, AmazonDynoamoDBFullAccess ---> Next ---> Name: lambda-role ---> Create role
+
+Lets create lambda function ---> Lambda ---> Create function ---> 'Check' Author from scratch, Name: demo-function, Runtime: Python 3.9(8), x86_64, Change default execution role: 'Check' Choose an existing role, Select the IAM Role created above ---> Create function
+
+Compress the zip file available in local system
+
+Open the created function ---> 'Code' tab ---> Upload from ---> select .zip and then select the zip file in local system ---> Save ---> Once after successfully uploaded the code, you will see the code in the 'Code' tab
+
+Lets create Dynamo DB table ---> 'Tables' (leftpane) ---> Create table ---> Name: Give the table name as available in the code (in the file 'lambda_function.py'). The table name in the .py file is 'kastrotable' ---> Partition key: Email, String, Table settings: default settings ---> Create table
+Open the dynamodb table created ---> 'Explore items' (left pane) ---> You will see 'No items to display' 
+
+Lets configure API Gateway ---> Scroll down to 'Rest API' ---> Build ---> 'Check' New API, API Name: demo-api, API Endpoint type: regional ---> Create API
+Open the API created ---> Create method ---> Method type: GET, Integration type: Lambda Function, Enable the toogle bar of 'Lambda proxy integration' ---> Lambda function: Select the region in which you have created the lambda function, select the lambda function created, Enable the toogle bar of 'default timeout' ---> Create method 
+Open the API created ---> Create method ---> Method type: POST, Integration type: Lambda Function, Enable the toogle bar of 'Lambda proxy integration' ---> Lambda function: Select the region in which you have created the lambda function, select the lambda function created, Enable the toogle bar of 'default timeout' ---> Create method 
+We have now created required API calls and now we are ready to deploy the API calls ---> Click on 'Deploy API' ---> Stage: New stage, Name: dev-1 ---> Deploy ---> You can see an 'Invoke URL' ---> Copy that URL and paste in new tab of broswer ---> You will see the app ---> Enter the data in the app
+
+To check the data in the app, goto Dynamo DB ---> Open the database created ---> Tables (leftpane) ---> Explore items (left pane) ---> Select the table ---> click on Refresh icon ---> You will see the data entered in the app
+
+
+
+
+
