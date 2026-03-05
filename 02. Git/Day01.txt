@@ -1,0 +1,127 @@
+Git & GitHub - 5 days
+====================
+Commit history
+git log --oneline
+b78d2dd (HEAD -> master) text and net files
+f6fab29 prakash java file
+121a131 linux files
+f9f8da9 netflix code
+5f05d5c written python code
+c1d103f created text file
+
+To see the commits from a particular number (2) to another number (4)
+
+Reference mapping
+HEAD~0  → b78d2dd
+HEAD~1  → f6fab29
+HEAD~2  → 121a131
+HEAD~3  → f9f8da9
+HEAD~4  → 5f05d5c
+HEAD~5  → c1d103f
+
+You wanted commits between commit 2 and commit 4.
+That means:
+f6fab29 → HEAD~1
+f9f8da9 → HEAD~3
+Command
+git log --oneline HEAD~3..HEAD~1
+
+Output
+121a131 linux files
+f6fab29 prakash java file
+
+git log --oneline f9f8da9..f6fab29
+
+git log --oneline HEAD~3..HEAD~1
+
+===========================
+  494  git config --global user.name "Robot-User"
+  495  git config user.name
+  496  git config --global user.email "robotuser@gmail.com"
+  497  git config user.email
+  498  git config --list
+  499  ls
+  500  pwd
+  501  ls
+  502  git init
+  503  touch kastro.txt
+  504  ls
+  505  git status
+  506  git add kastro.txt
+  507  git status
+  508  git commit -m "created text file" kastro.txt
+  509  git status
+  510  ls
+  511  vi kastro.txt
+  512  cat kastro.txt
+  513  git status
+  514  git add kastro.txt
+  515  git status
+  516  git commit -m "written python code" kastro.txt
+  517  git status
+  518  touch git{1..5}.txt
+  519  ls
+  520  git status
+  521  vi kastro.txt
+  522  git status
+  523  git add kastro.txt
+  524  git status
+  525  git commit -m "netflix code
+  526  git commit -m "netflix code" kastro.txt
+  527  git status
+  528  git status
+  529  touch linux{6..9}.java
+  530  ll
+  531  git status
+  532  touch prakash.java
+  533  git status
+  534  git add linux*
+  535  git status
+  536  git commit -m "linux files" linux*
+  537  git status
+  538  git status
+  539  git add prakash.java
+  540  git status
+  541  git commit -m "prakash java file" prakash.java
+  542  git status
+  543  touch kartik{11..15}.net
+  544  git status
+  545  git add .
+  546  git status
+  547  git commit -m "text and net files" .
+  548  git status
+  549  git log
+  550  git log --oneline
+  551  git log --oneline
+  552  git log
+  553  git log -2
+  554  git log --oneline -2
+  555  git log --oneline
+  556  git log -2;4
+  557  git log -2 -4
+  558  git log --oneline
+  559  git log --oneline
+  560  git log --oneline f6fab29..f9f8da9
+  561  git log --oneline f6fab29^..f9f8da9
+  562  git log --oneline f9f8da9..f6fab29
+  563  git log --oneline HEAD~3..HEAD~1
+  564  git log --oneline
+  565  git show f9f8da9
+  566  vi kastro.txt
+  567  git add .
+  568  git commit -m "deleted line" kastro.txt
+  569  git log --oneline
+  570  git show 0bfae1d
+  571  git log --oneline
+  572  git show
+  573  git show c1d103f
+  574  git log
+  575  git log --oneline
+  576  git shortlog
+  577  git log --pretty=oneline
+  578  git log --oneline
+  579  git log --pretty=format:"%h-%an, %ar:%s"
+  580  git log --oneline="Robot-User"
+  581  git log --oneline --author="Robot-User"
+  582  ls
+  583  git blame kartik11.net
