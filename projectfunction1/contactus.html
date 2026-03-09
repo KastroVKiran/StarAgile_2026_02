@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn with KASTRO - Premium Contact Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Animated background particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      animation: float 20s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) translateX(0); }
+      25% { transform: translateY(-30px) translateX(15px); }
+      50% { transform: translateY(-50px) translateX(-15px); }
+      75% { transform: translateY(-20px) translateX(30px); }
+    }
+
+    /* Generate multiple particles */
+    .particle:nth-child(1) { width: 300px; height: 300px; top: 10%; left: 5%; animation-duration: 25s; }
+    .particle:nth-child(2) { width: 400px; height: 400px; bottom: 5%; right: 5%; animation-duration: 30s; }
+    .particle:nth-child(3) { width: 200px; height: 200px; top: 40%; right: 20%; animation-duration: 22s; }
+    .particle:nth-child(4) { width: 350px; height: 350px; bottom: 30%; left: 10%; animation-duration: 28s; }
+    .particle:nth-child(5) { width: 250px; height: 250px; top: 70%; left: 25%; animation-duration: 24s; }
+
+    /* Main heading with luxury styling */
+    .main-heading {
+      text-align: center;
+      color: #fff;
+      margin-bottom: 30px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .main-heading h1 {
+      font-size: 3.5em;
+      font-weight: 800;
+      background: linear-gradient(135deg, #fff 0%, #a8c0ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 2px 2px 20px rgba(255,255,255,0.2);
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+      animation: fadeInDown 1s ease-out;
+    }
+
+    .main-heading .subtitle {
+      font-size: 1.2em;
+      font-weight: 300;
+      color: rgba(255,255,255,0.8);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+      padding: 8px 25px;
+      border-radius: 50px;
+      display: inline-block;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      animation: fadeInUp 1s ease-out 0.3s both;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Premium form styling */
+    form {
+      background: rgba(255, 255, 255, 0.98);
+      padding: 50px;
+      border-radius: 30px;
+      box-shadow: 
+        0 25px 60px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      width: 100%;
+      max-width: 600px;
+      position: relative;
+      z-index: 3;
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transform-origin: center;
+    }
+
+    form::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(135deg, #667eea, #764ba2, #667eea);
+      border-radius: 32px;
+      z-index: -1;
+      animation: borderGlow 3s infinite alternate;
+    }
+
+    @keyframes borderGlow {
+      from {
+        opacity: 0.5;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    form:hover {
+      transform: translateY(-15px) scale(1.02);
+      box-shadow: 0 35px 80px rgba(0, 0, 0, 0.6);
+    }
+
+    .form-header {
+      text-align: center;
+      margin-bottom: 35px;
+      position: relative;
+    }
+
+    .form-header h2 {
+      color: #1a1a2e;
+      font-size: 2.5em;
+      font-weight: 700;
+      margin-bottom: 10px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .form-header h2 span {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .form-header .form-subtitle {
+      color: #666;
+      font-size: 1.1em;
+      font-weight: 300;
+    }
+
+    .form-header::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #667eea, #764ba2, transparent);
+      border-radius: 2px;
+    }
+
+    /* Form field enhancements */
+    .form-group {
+      margin-bottom: 25px;
+      position: relative;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #333;
+      font-weight: 600;
+      font-size: 1em;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+    }
+
+    label i {
+      margin-right: 8px;
+      color: #667eea;
+      font-size: 1.1em;
+    }
+
+    .input-wrapper {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      transition: all 0.3s ease;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 16px 20px;
+      box-sizing: border-box;
+      border: 2px solid #eaeaea;
+      border-radius: 15px;
+      font-size: 1.1em;
+      font-family: 'Poppins', sans-serif;
+      transition: all 0.3s ease;
+      background: #fafafa;
+      color: #333;
+      font-weight: 400;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 5px rgba(102, 126, 234, 0.1);
+      background: #fff;
+      transform: translateY(-2px);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 150px;
+      line-height: 1.6;
+    }
+
+    /* Character count */
+    .char-count {
+      text-align: right;
+      font-size: 0.9em;
+      color: #999;
+      margin-top: 5px;
+    }
+
+    /* Submit button */
+    input[type="submit"] {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #667eea 100%);
+      background-size: 200% auto;
+      color: #fff;
+      cursor: pointer;
+      font-size: 1.3em;
+      font-weight: 700;
+      padding: 18px 30px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: all 0.4s ease;
+      box-shadow: 
+        0 4px 15px rgba(102, 126, 234, 0.4),
+        0 0 0 2px rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    input[type="submit"]::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.7s ease;
+    }
+
+    input[type="submit"]:hover {
+      background-position: right center;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.6);
+      letter-spacing: 3px;
+    }
+
+    input[type="submit"]:hover::before {
+      left: 100%;
+    }
+
+    input[type="submit"]:active {
+      transform: translateY(-2px);
+    }
+
+    /* Footer with enhanced social links */
+    footer {
+      margin-top: 50px;
+      text-align: center;
+      position: relative;
+      z-index: 3;
+      width: 100%;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+      padding: 15px 35px;
+      background: rgba(255, 255, 255, 0.98);
+      border-radius: 60px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      font-size: 1.2em;
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .social-link i {
+      font-size: 1.8em;
+      transition: all 0.4s ease;
+    }
+
+    .social-link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.2) 100%);
+      transform: translateX(-100%);
+      transition: transform 0.6s ease;
+    }
+
+    .social-link:hover::before {
+      transform: translateX(0);
+    }
+
+    .social-link.youtube {
+      background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+      color: white;
+    }
+
+    .social-link.youtube:hover {
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 20px 40px rgba(255, 0, 0, 0.4);
+    }
+
+    .social-link.linkedin {
+      background: linear-gradient(135deg, #0077b5 0%, #005582 100%);
+      color: white;
+    }
+
+    .social-link.linkedin:hover {
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 20px 40px rgba(0, 119, 181, 0.4);
+    }
+
+    .website-container {
+      margin-top: 30px;
+      padding: 20px;
+      position: relative;
+    }
+
+    .website-name {
+      font-size: 2.2em;
+      color: white;
+      font-weight: 800;
+      text-shadow: 
+        0 2px 10px rgba(0,0,0,0.3),
+        0 0 20px rgba(102, 126, 234, 0.5);
+      letter-spacing: 3px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+      padding: 15px 50px;
+      border-radius: 60px;
+      display: inline-block;
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.4s ease;
+    }
+
+    .website-name:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.1) 100%);
+      border-color: rgba(255, 255, 255, 0.4);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    }
+
+    /* Input validation styles */
+    input:invalid:not(:placeholder-shown),
+    textarea:invalid:not(:placeholder-shown) {
+      border-color: #ff6b6b;
+    }
+
+    input:valid:not(:placeholder-shown),
+    textarea:valid:not(:placeholder-shown) {
+      border-color: #51cf66;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .main-heading h1 {
+        font-size: 2.2em;
+      }
+
+      .main-heading .subtitle {
+        font-size: 0.9em;
+        letter-spacing: 2px;
+      }
+
+      form {
+        padding: 30px 20px;
+        margin: 20px;
+      }
+
+      .form-header h2 {
+        font-size: 2em;
+      }
+
+      .social-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .social-link {
+        width: 280px;
+        justify-content: center;
+      }
+
+      .website-name {
+        font-size: 1.5em;
+        padding: 12px 25px;
+      }
+    }
+
+    /* Loading animation for submit */
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    form.submitting input[type="submit"] {
+      animation: pulse 1.5s infinite;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Animated particles background -->
+  <div class="particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+
+  <!-- Main heading with new name -->
+  <div class="main-heading">
+    <h1>KASTRO'S TECH HAVEN</h1>
+    <div class="subtitle">Cloud Innovation & Digital Excellence</div>
+  </div>
+
+  <!-- Premium Contact Form -->
+  <form action="/dev" method="post">
+    <div class="form-header">
+      <h2><span>Connect</span> With Me</h2>
+      <div class="form-subtitle">Share your thoughts, I'd love to hear from you</div>
+    </div>
+
+    <div class="form-group">
+      <label for="fname"><i class="fas fa-user"></i> First Name</label>
+      <div class="input-wrapper">
+        <input type="text" id="fname" name="fname" placeholder="Enter your first name" required>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="lname"><i class="fas fa-user"></i> Last Name</label>
+      <div class="input-wrapper">
+        <input type="text" id="lname" name="lname" placeholder="Enter your last name" required>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
+      <div class="input-wrapper">
+        <input type="email" id="email" name="email" placeholder="your.name@example.com" required>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="message"><i class="fas fa-comment"></i> Message</label>
+      <div class="input-wrapper">
+        <textarea id="message" name="message" placeholder="What would you like to share with me?" required></textarea>
+      </div>
+      <div class="char-count"><span id="current-count">0</span> / 500</div>
+    </div>
+
+    <input type="submit" value="Send Message ✨">
+  </form>
+
+  <!-- Footer with social links -->
+  <footer>
+    <div class="social-links">
+      <a href="https://www.youtube.com/@LearnWithKASTRO" target="_blank" class="social-link youtube">
+        <i class="fab fa-youtube"></i>
+        Subscribe on YouTube
+      </a>
+      <a href="https://linkedin.com/in/kastro-kiran" target="_blank" class="social-link linkedin">
+        <i class="fab fa-linkedin"></i>
+        Connect on LinkedIn
+      </a>
+    </div>
+    <div class="website-container">
+      <div class="website-name">
+        www.learnwithkastro.com
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript for enhanced functionality -->
+  <script>
+    const form = document.querySelector('form');
+    const messageField = document.getElementById('message');
+    const charCount = document.getElementById('current-count');
+
+    // Character counter
+    messageField.addEventListener('input', function() {
+      const count = this.value.length;
+      charCount.textContent = count;
+      
+      if (count > 450) {
+        charCount.style.color = '#ff6b6b';
+      } else {
+        charCount.style.color = '#999';
+      }
+    });
+
+    // Form hover effect
+    form.addEventListener('mouseover', () => {
+      form.style.transform = 'translateY(-15px) scale(1.02)';
+    });
+
+    form.addEventListener('mouseout', () => {
+      form.style.transform = 'translateY(0) scale(1)';
+    });
+
+    // Form submission animation
+    form.addEventListener('submit', function(e) {
+      // Don't actually submit for demo, but you can remove this in production
+      // e.preventDefault();
+      
+      this.classList.add('submitting');
+      
+      // Show success message (you can customize this)
+      const submitBtn = this.querySelector('input[type="submit"]');
+      const originalValue = submitBtn.value;
+      submitBtn.value = 'Sending... ✨';
+      
+      // Remove animation class after 2 seconds (just for demo)
+      setTimeout(() => {
+        this.classList.remove('submitting');
+        submitBtn.value = originalValue;
+      }, 2000);
+    });
+
+    // Auto-resize textarea
+    messageField.addEventListener('input', function() {
+      this.style.height = 'auto';
+      this.style.height = (this.scrollHeight) + 'px';
+    });
+
+    // Floating label effect
+    const inputs = document.querySelectorAll('input, textarea');
+    inputs.forEach(input => {
+      input.addEventListener('focus', function() {
+        this.parentElement.parentElement.querySelector('label i').style.color = '#667eea';
+      });
+      
+      input.addEventListener('blur', function() {
+        this.parentElement.parentElement.querySelector('label i').style.color = '#667eea';
+      });
+    });
+  </script>
+</body>
+</html>

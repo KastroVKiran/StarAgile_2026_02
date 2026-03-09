@@ -1,0 +1,89 @@
+Git & GitHub_Day02
+===================
+=> GIT CHECKOUT
+1. To rollback to the previous version of the code.
+Commit 01 ---- Version 01
+Commit 02 ---- Version 01, Version 02
+Commit 03 ---- Version 01, Version 02, Version 03
+
+2. To switch from one branch to another branch**
+
+=> Changing the Commit Message
+git commit --amend -m "fixed: small bug related to java app code"
+
+=> GIT DIFF
+git diff <Branch1Name> <Branch2Name>
+
+Scenario 1: Working Area Vs Staging Area
+git diff
+
+Scenario 2: Staging Area Vs Local Repo Area
+git diff --staged
+OR
+git diff --cached
+
+Scenario 3: Working Area Vs Local Repo Area
+git diff HEAD
+
+To see the changes between any two commits
+git diff 1d910ad..051ec8b
+
+=> GIT SQUASH
+It means combining multiple commits into a single commit, so that the commit history will look clean
+
+Wall (File) ----> Paint (Commit)
+Commit 1 - Primer
+Commit 2 - First coat
+Commit 3 - Second coat
+Commit 4 - Fixing spots
+
+Scenario 1: Combining multiple commits to a single commit
+
+Scenario 2: Squash only the two middle commits
+
+=> GIT RESET
+git reset moves the HEAD pointer backward
+But how much data it keeps or deletes depends on
+	-- soft reset
+	-- hard reset
+
+GIT SOFT RESET
+What it does is
+	moves HEAD to previous commit
+	keeps changes in staging area
+	keeps files unchanged
+
+git reset --soft <CommitID>
+
+GIT HARD RESET
+What it does is
+	moves HEAD backwards
+	clears staging area
+	deletes working directory changes
+
+git reset --hard <CommitID>
+
+One-line;
+Soft reset = undo commit, keeps the work
+Hard reset = undo commit, deletes the work
+
+=> GIT REVERT
+it will undo a commit safely by creating a new commit
+git revert doesn't delete any commit, it will create a new commit + keeps full commit history
+
+Feature						git reset				git revert
+changes history				yes					no
+creates a new commit			no					yes
+
+
+
+
+
+
+
+
+
+
+
+
+
