@@ -1,0 +1,44 @@
+Git & GitHub_Day03
+===================
+=> GIT RESTORE - it will restore the changes made to the code
+
+Scenario 1: How to restore a staged file
+
+Scenario 2: Restore a staged file (unstage a staged file)
+git reset
+
+Scenario 3: Uncommit the committed file
+
+=> GIT STASH
+
+=> GITHUB
+GitHub is the place where developers store the source code of the application
+GitHub is the place where DevOps Engineers stores the files such as Jenkinsfile(s), Dockerfile(s), Kubernetes Manifest Files, Ansible Playbooks, Terraform files, ArgoCD files, Python Scripts, Shell Scripts...
+
+Repositories in GitHub
+Repo is nothing but a folder
+We can create two types of repos based on visibility;
+	Public Repo		- all the files in a public repo can be accessed by anyone
+	Private Repo		- all the files in a private repo can only be accessed by the people who has the permissions
+
+In real-time any GitHub repo is a private repo
+=> Push the Code to remote repo
+git push
+
+=> Get the code from remote to local
+git clone
+
+=> Creating a GitHub profile
+
+
+
+
+
+
+
+
+
+
+
+
+
