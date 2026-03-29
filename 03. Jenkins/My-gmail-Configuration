@@ -1,0 +1,281 @@
+my-mail configureation 
+
+pipeline {
+    agent any
+
+    tools {
+        jdk 'jdk21'
+    }
+
+    stages {
+
+        stage('Git Checkout') {
+            steps {
+                git 'https://github.com/kartikhegadi/my-prime-v2.git'
+            }
+        }
+
+        stage('Maven Build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+
+    }
+
+    post {
+        always {
+            script {
+                def buildStatus = currentBuild.currentResult
+                def buildUser = currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause')[0]?.userId ?: 'Github User'
+
+                emailext(
+                    subject: "Pipeline ${buildStatus}: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                    body: """
+                        <p>This is a Jenkins CICD pipeline status.</p>
+                        <p>Project: ${env.JOB_NAME}</p>
+                        <p>Build Number: ${env.BUILD_NUMBER}</p>
+                        <p>Build Status: ${buildStatus}</p>
+                        <p>Started by: ${buildUser}</p>
+                        <p>Build URL: <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
+                    """,
+                    to: 'karthikhegdi143@gmail.com',
+                    from: 'karthikhegdi143@gmail.com',
+                    replyTo: 'karthikhegdi143@gmail.com',
+                    mimeType: 'text/html'
+                )
+            }
+        }
+    }
+}
+
+
+
+
+
+
+------- BEST + VISUALS -------
+pipeline {
+    agent any
+
+    tools {
+        jdk 'jdk21'
+    }
+
+    stages {
+
+        stage('Git Checkout') {
+            steps {
+                git 'https://github.com/kartikhegadi/my-prime-v2.git'
+            }
+        }
+
+        stage('Maven Build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+
+    }
+
+    post {
+        always {
+            script {
+                def buildStatus = currentBuild.currentResult
+                def buildUser = currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause')[0]?.userId ?: 'GitHub User'
+                def buildDuration = currentBuild.durationString.replace(' and counting', '')
+
+                def statusColor   = buildStatus == 'SUCCESS' ? '#22c55e' : buildStatus == 'FAILURE' ? '#ef4444' : '#f59e0b'
+                def statusBg      = buildStatus == 'SUCCESS' ? '#f0fdf4' : buildStatus == 'FAILURE' ? '#fef2f2' : '#fffbeb'
+                def statusIcon    = buildStatus == 'SUCCESS' ? '✅' : buildStatus == 'FAILURE' ? '❌' : '⚠️'
+                def statusLabel   = buildStatus == 'SUCCESS' ? 'BUILD SUCCESSFUL' : buildStatus == 'FAILURE' ? 'BUILD FAILED' : 'BUILD UNSTABLE'
+                def headerGradient = buildStatus == 'SUCCESS'
+                    ? 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)'
+                    : buildStatus == 'FAILURE'
+                        ? 'linear-gradient(135deg, #1a1a2e 0%, #2d0a0a 50%, #5c0a0a 100%)'
+                        : 'linear-gradient(135deg, #1a1a2e 0%, #2d2000 50%, #5c3d00 100%)'
+
+                emailext(
+                    subject: "${statusIcon} [${buildStatus}] ${env.JOB_NAME} — Build #${env.BUILD_NUMBER}",
+                    to: 'karthikhegdi143@gmail.com',
+                    from: 'karthikhegdi143@gmail.com',
+                    replyTo: 'karthikhegdi143@gmail.com',
+                    mimeType: 'text/html',
+                    body: """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jenkins Build Notification</title>
+</head>
+<body style="margin:0;padding:0;background:#0d1117;font-family:'Segoe UI',Arial,sans-serif;">
+
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#0d1117;padding:32px 0;">
+    <tr>
+      <td align="center">
+        <table width="620" cellpadding="0" cellspacing="0" style="max-width:620px;width:100%;">
+
+          <!-- ═══ HEADER ═══ -->
+          <tr>
+            <td style="background:${headerGradient};border-radius:16px 16px 0 0;padding:36px 40px 28px;text-align:center;">
+              <!-- Jenkins gear icon -->
+              <div style="margin-bottom:14px;">
+                <span style="display:inline-block;width:56px;height:56px;background:rgba(255,255,255,0.10);border-radius:50%;line-height:56px;font-size:28px;">⚙️</span>
+              </div>
+              <div style="font-size:11px;font-weight:700;letter-spacing:3px;color:rgba(255,255,255,0.5);text-transform:uppercase;margin-bottom:6px;">Jenkins CI/CD Pipeline</div>
+              <div style="font-size:24px;font-weight:700;color:#ffffff;margin-bottom:4px;">${env.JOB_NAME}</div>
+              <div style="font-size:13px;color:rgba(255,255,255,0.45);">Build Notification Report</div>
+            </td>
+          </tr>
+
+          <!-- ═══ STATUS BANNER ═══ -->
+          <tr>
+            <td style="background:${statusBg};border-left:4px solid ${statusColor};padding:18px 32px;text-align:center;">
+              <span style="font-size:26px;vertical-align:middle;">${statusIcon}</span>
+              <span style="font-size:17px;font-weight:800;color:${statusColor};letter-spacing:1.5px;vertical-align:middle;margin-left:10px;">${statusLabel}</span>
+            </td>
+          </tr>
+
+          <!-- ═══ METRICS ROW ═══ -->
+          <tr>
+            <td style="background:#161b22;padding:24px 32px;">
+              <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+
+                  <!-- Build # -->
+                  <td width="33%" align="center" style="padding:0 6px;">
+                    <div style="background:#0d1117;border:1px solid #30363d;border-radius:10px;padding:16px 10px;">
+                      <div style="font-size:10px;color:#8b949e;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;">Build</div>
+                      <div style="font-size:22px;font-weight:700;color:#58a6ff;">#${env.BUILD_NUMBER}</div>
+                    </div>
+                  </td>
+
+                  <!-- Status -->
+                  <td width="34%" align="center" style="padding:0 6px;">
+                    <div style="background:#0d1117;border:1px solid ${statusColor};border-radius:10px;padding:16px 10px;">
+                      <div style="font-size:10px;color:#8b949e;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;">Status</div>
+                      <div style="font-size:14px;font-weight:700;color:${statusColor};">${buildStatus}</div>
+                    </div>
+                  </td>
+
+                  <!-- Duration -->
+                  <td width="33%" align="center" style="padding:0 6px;">
+                    <div style="background:#0d1117;border:1px solid #30363d;border-radius:10px;padding:16px 10px;">
+                      <div style="font-size:10px;color:#8b949e;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;">Duration</div>
+                      <div style="font-size:13px;font-weight:700;color:#e6edf3;">${buildDuration}</div>
+                    </div>
+                  </td>
+
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- ═══ PIPELINE STAGES ═══ -->
+          <tr>
+            <td style="background:#161b22;padding:0 32px 24px;">
+              <div style="font-size:11px;font-weight:700;letter-spacing:2px;color:#8b949e;text-transform:uppercase;margin-bottom:14px;">Pipeline Stages</div>
+              <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+
+                  <!-- Stage 1 -->
+                  <td align="center" width="45%">
+                    <div style="background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:12px 10px;">
+                      <div style="font-size:18px;margin-bottom:4px;">📥</div>
+                      <div style="font-size:11px;font-weight:700;color:#58a6ff;">Git Checkout</div>
+                      <div style="font-size:10px;color:#3fb950;margin-top:3px;">● Completed</div>
+                    </div>
+                  </td>
+
+                  <!-- Arrow -->
+                  <td align="center" width="10%" style="font-size:18px;color:#30363d;">→</td>
+
+                  <!-- Stage 2 -->
+                  <td align="center" width="45%">
+                    <div style="background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:12px 10px;">
+                      <div style="font-size:18px;margin-bottom:4px;">🔨</div>
+                      <div style="font-size:11px;font-weight:700;color:#58a6ff;">Maven Build</div>
+                      <div style="font-size:10px;color:${statusColor};margin-top:3px;">● ${buildStatus}</div>
+                    </div>
+                  </td>
+
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- ═══ BUILD DETAILS ═══ -->
+          <tr>
+            <td style="background:#161b22;padding:0 32px 28px;">
+              <div style="font-size:11px;font-weight:700;letter-spacing:2px;color:#8b949e;text-transform:uppercase;margin-bottom:14px;">Build Details</div>
+              <table width="100%" cellpadding="0" cellspacing="0" style="background:#0d1117;border:1px solid #30363d;border-radius:10px;overflow:hidden;">
+
+                <tr style="border-bottom:1px solid #21262d;">
+                  <td style="padding:12px 18px;font-size:12px;color:#8b949e;width:36%;">🏷️ &nbsp;Job Name</td>
+                  <td style="padding:12px 18px;font-size:12px;color:#e6edf3;font-weight:600;">${env.JOB_NAME}</td>
+                </tr>
+
+                <tr style="border-bottom:1px solid #21262d;">
+                  <td style="padding:12px 18px;font-size:12px;color:#8b949e;">🔢 &nbsp;Build Number</td>
+                  <td style="padding:12px 18px;font-size:12px;color:#58a6ff;font-weight:700;">#${env.BUILD_NUMBER}</td>
+                </tr>
+
+                <tr style="border-bottom:1px solid #21262d;">
+                  <td style="padding:12px 18px;font-size:12px;color:#8b949e;">👤 &nbsp;Triggered By</td>
+                  <td style="padding:12px 18px;font-size:12px;color:#e6edf3;font-weight:600;">${buildUser}</td>
+                </tr>
+
+                <tr style="border-bottom:1px solid #21262d;">
+                  <td style="padding:12px 18px;font-size:12px;color:#8b949e;">⏱️ &nbsp;Duration</td>
+                  <td style="padding:12px 18px;font-size:12px;color:#e6edf3;">${buildDuration}</td>
+                </tr>
+
+                <tr style="border-bottom:1px solid #21262d;">
+                  <td style="padding:12px 18px;font-size:12px;color:#8b949e;">🌿 &nbsp;Repository</td>
+                  <td style="padding:12px 18px;font-size:12px;color:#e6edf3;">kartikhegadi/my-prime-v2</td>
+                </tr>
+
+                <tr>
+                  <td style="padding:12px 18px;font-size:12px;color:#8b949e;">🔧 &nbsp;Java Version</td>
+                  <td style="padding:12px 18px;font-size:12px;color:#e6edf3;">JDK 21</td>
+                </tr>
+
+              </table>
+            </td>
+          </tr>
+
+          <!-- ═══ CTA BUTTON ═══ -->
+          <tr>
+            <td style="background:#161b22;padding:0 32px 32px;text-align:center;">
+              <a href="${env.BUILD_URL}" style="display:inline-block;background:${statusColor};color:#ffffff;font-size:13px;font-weight:700;text-decoration:none;padding:14px 36px;border-radius:8px;letter-spacing:0.5px;">
+                🔍 &nbsp; View Full Build Logs
+              </a>
+            </td>
+          </tr>
+
+          <!-- ═══ FOOTER ═══ -->
+          <tr>
+            <td style="background:#0d1117;border-radius:0 0 16px 16px;padding:20px 32px;text-align:center;border-top:1px solid #21262d;">
+              <p style="margin:0;font-size:11px;color:#484f58;">This is an automated notification from your Jenkins CI/CD pipeline.</p>
+              <p style="margin:6px 0 0;font-size:11px;color:#484f58;">
+                <a href="${env.BUILD_URL}console" style="color:#58a6ff;text-decoration:none;">Console Output</a>
+                &nbsp;·&nbsp;
+                <a href="${env.JENKINS_URL}" style="color:#58a6ff;text-decoration:none;">Jenkins Dashboard</a>
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>
+                    """
+                )
+            }
+        }
+    }
+}
