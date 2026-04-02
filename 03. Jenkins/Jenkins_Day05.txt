@@ -1,0 +1,105 @@
+Module 6: Jenkins_Day05
+=====================
+=> RBAC
+=> Multi-Branch Pipeline
+=> Major Project
+
+=> RBAC
+Roll Based Access Control
+
+AWS - Root Account (all kinds of privileges), IAM User Account (s3 full access, ec2 full access...)
+
+While we are setting up the Jenkins, we will create Admin User (job creation, deletion, updates, plugins, configuration....)
+Based on the experience/roll of a person in the DevOps, we can restrict the permissions to the Jenkins UI - Jenkins Users
+
+Note: When we create the user, by default Admin permissions will be there for that user
+
+=> Multi-Branch Pipeline
+Repo 	- Branch 1	- movies			- Pipeline 1	- Jenkinsfile
+		- Branch 2	- sports			- Pipeline 2	- Jenkinsfile
+		- Branch 3	- animations		- Pipeline 3	- Jenkinsfile
+		- Branch 4	- payments		- Pipeline 4	- Jenkinsfile
+
+=> Major Project
+Jenkins + GitHub + Maven + Nexus + SonarQube + S3 + Tomcat
+
+Tomcat & Jenkins - 8080
+Nexus - 8081
+SonarQube - 9000
+
+4 servers
+Jenkins Server		- Amazon Linux 2023 AMI	- t2.medium		- 30 GB
+Tomcat Server		- Amazon Linux 2023 AMI	- t2.micro		- 30 GB
+Nexus Server		- Amazon Linux 2023 AMI	- t2.medium	- 30 GB
+SonarQube Server	- Amazon Linux 2023 AMI	- t2.medium	- 30 GB
+
+Nexus Password: kastro123
+SonarQube Password: kastro
+
+
+Java tool as "jdk21"
+Maven tool as "maven3"
+
+
+Nexus Stage
+
+squ_0d05361471c4266993d080470129a213f4f4215d
+
+pipeline {
+    agent any
+    tools {
+        jdk 'jdk21'
+        maven 'maven3'
+    }
+
+    stages {
+        stage('Git Checkout') {
+            steps {
+                git 'https://github.com/KastroVKiran/my-prime-v2.git'
+            }
+        }
+        stage('Maven Clean') {
+            steps {
+                sh 'mvn clean'
+            }
+        }
+        stage('Maven Build') {
+            steps {
+                sh 'mvn package'
+            }
+        }
+        stage('Sonar Test') {
+            steps {
+                withSonarQubeEnv('sonarqube-server') {
+                    sh 'mvn sonar:sonar'
+                }
+            }
+        }
+        stage('Artifacts to Nexus') {
+            steps {
+                nexusArtifactUploader artifacts: [[artifactId: 'amazon-prime-clone', classifier: '', file: 'target/amazon-prime-clone.war', type: 'war']], credentialsId: 'nexus-creds', groupId: 'com.amazonprime', nexusUrl: '65.1.107.232:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'prime-app-artifacts', version: '2.0.4'
+            }
+        }
+        stage('Tomcat Deployment') {
+            steps {
+                deploy adapters: [tomcat9(alternativeDeploymentContext: '', credentialsId: 'tomcat-creds', path: '', url: 'http://3.108.65.163:8080')], contextPath: 'Prime-App', war: '**/*.war'
+            }
+        }
+    }
+}
+
+
+Task: Pick a specific version of the artifact from Nexus and deploy to tomcat
+
+
+
+
+
+
+
+
+
+
+
+
+
